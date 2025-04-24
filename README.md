@@ -39,10 +39,12 @@ The final architecture will include the following services:
 
 ### ⚙️ Technical Constraints
 
+- ❌ No pulling **ready images from Docker Hub** (except Alpine/Debian).
+- ❌ **NGINX should only run over port 443** (no port 80).
 - ❌ No usage of `network: host`, `--link`, or `links:` in `docker-compose.yml`.
 - ❌ No `latest` tags.
 - ❌ No infinite loops (`tail -f`, `while true`, etc.) to keep containers alive.
-- ❌ No plaintext passwords in Dockerfiles.
+- ❌ All passwords must be external, no hardcoded in any Dockerfile.
 - ✅ Containers must restart on failure (`restart: always`).
 - ✅ Environment variables must be used for all sensitive data.
 - ✅ Use of `.env` and Docker secrets is strongly encouraged.
