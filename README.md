@@ -6,8 +6,6 @@ The Inception project challenges you to design a secure and modular infrastructu
 
 ## 📚 Project Description
 
-The goal of this project is to introduce students to real-world DevOps principles by setting up a full web stack using **Docker Compose**. The architecture is modular and adheres strictly to container best practices and security standards.
-
 You are required to:
 - Create your own Dockerfiles (no pulling ready images from DockerHub except Alpine/Debian).
 - Host all services in separate containers.
