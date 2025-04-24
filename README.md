@@ -15,7 +15,7 @@ You are required to:
 
 ---
 
-## 🧱 Infrastructure Overview
+### 🧱 Infrastructure Overview
 
 The final architecture will include the following services:
 
@@ -29,7 +29,7 @@ The final architecture will include the following services:
 
 ---
 
-## 🌐 Domain Configuration
+### 🌐 Domain Configuration
 
 - Your WordPress site must be accessible only through `https://login.42.fr`.
 - Replace `login` with your actual 42 intra username.
@@ -37,7 +37,7 @@ The final architecture will include the following services:
 
 ---
 
-## ⚙️ Technical Constraints
+### ⚙️ Technical Constraints
 
 - ❌ No usage of `network: host`, `--link`, or `links:` in `docker-compose.yml`.
 - ❌ No `latest` tags.
@@ -48,3 +48,19 @@ The final architecture will include the following services:
 - ✅ Use of `.env` and Docker secrets is strongly encouraged.
 
 ---
+
+### Docker Compose File (`docker-compose.yml`):
+
+- All services will be defined here.
+- The `build` part of each service should be directed to its own Dockerfile.
+- Fields like `volumes`, `networks`, `environment`, `depends_on`, `restart`, `ports` must be defined correctly.
+
+---
+
+### 🗝️ .env File:
+
+- Environment variables will be pulled from here.
+- Passwords, usernames, database information should be defined here.
+- `.env` file should be imported into `.gitignore`.#### Docker Compose File (`docker-compose.yml`):
+
+
