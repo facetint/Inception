@@ -37,7 +37,8 @@ Docker Engine is the software that builds, runs, and manages Docker containers u
 - **Docker CLI (Command Line Interface)**: Allows users to manage Docker via the command line.
 
 > **Visual**: Docker Engine acts as the interface between the CLI and the Docker Daemon, managing the container lifecycle.  
-> ![Docker Engine](https://example.com/docker-engine.png)
+> ![Docker Engine](https://github.com/facetint/Inception/raw/main/images/docker-engine.png)
+
 
 ---
 
