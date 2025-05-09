@@ -107,6 +107,99 @@ Docker networks define how containers communicate with each other and with the o
 
 ---
 
+
+## Docker Commands Cheat Sheet
+
+Docker is a powerful tool for managing containers. Here are some essential Docker commands to get you started:
+
+---
+
+### 1. **`docker --version`**
+
+  Displays the installed Docker version.
+
+```bash
+docker --version
+````
+
+### 2. **`docker run`**
+
+  Runs a container from an image.
+
+```bash
+docker run -d -p 8080:80 nginx
+
+```
+>> Starts a container in detached mode and maps port 8080 on the host to port 80 inside the container.
+
+
+### 3. **`docker ps`**
+
+Lists running containers.
+
+```bash
+docker ps
+
+```
+
+### 4. **`docker exec`**
+
+  Executes a command inside a running container.
+
+```bash
+docker exec -it <container-id> /bin/bash
+```
+
+### 5. **`docker build`**
+
+  Builds an image from a Dockerfile.
+
+```bash
+docker build -t myapp .
+```
+
+### 6. **`docker images`**
+Lists all Docker images on your machine.
+
+```bash
+docker images
+
+```
+
+
+### 7. **`docker stop`**
+Stops a running container.
+
+```bash
+docker stop <container-id>
+```
+
+### 8. **`docker start`**
+Starts a stopped container.
+
+```bash
+docker start <container-id>
+
+```
+
+###  9. **`docker rm`**
+Removes a container.
+
+```bash
+docker rm <container-id>
+
+```
+
+### 10. **`docker rmi`**
+Removes an image.
+
+```bash
+docker rmi <image-id>
+```
+
+
 ### Docs
 - [Docker Official Documentation](https://docs.docker.com/)
 - [Docker Hub](https://hub.docker.com/)
+
+
