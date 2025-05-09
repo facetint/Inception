@@ -4,7 +4,6 @@ The Inception project challenges you to design a secure and modular infrastructu
 
 ---
 
-
 ## 📑 Table of Contents
 - [What is Docker?](#what-is-docker)
 - [Docker Architecture](#docker-architecture)
