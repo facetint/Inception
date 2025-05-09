@@ -23,125 +23,112 @@ The Inception project challenges you to design a secure and modular infrastructu
 ---
 
 
-## What is Docker?
+## 🌍 What is Docker?
 
-  Docker is an open platform that simplifies developing, shipping, and running applications by separating them from the underlying infrastructure, enabling faster and more consistent deployment.
+Docker is an open platform that simplifies the development, shipping, and running of applications by isolating them from the underlying infrastructure, enabling faster and more consistent deployment.
 
-  Docker is written in the Go programming language and takes advantage of several features of the Linux kernel to deliver its functionality. Docker uses a technology called namespaces to provide the isolated workspace called the container. When you run a container, Docker creates a set of namespaces for that container.
-
-These namespaces provide a layer of isolation. Each aspect of a container runs in a separate namespace and its access is limited to that namespace.
-
-
-
-## Docker architecture
-
-
-  Docker uses a client-server architecture where the Docker client communicates with the Docker daemon to build, run, and manage containers. They can run on the same machine or connect remotely via a REST API over UNIX sockets or a network. Docker Compose is another client that manages multi-container applications.
-
-
-
-![image](https://github.com/user-attachments/assets/1a71350c-a302-4c9b-8991-f2c84ed153d8)
-
-
-
-## Docker Core Components
-
-Docker is a platform that runs software applications inside containers. Containers provide isolated environments that make applications more efficient and portable. Let's explore the core components of Docker in detail.
+Docker is written in the Go programming language and leverages several features of the Linux kernel. It uses **namespaces** to create isolated environments called **containers**. When you run a container, Docker creates a set of namespaces for that container to ensure isolation.
 
 ---
 
-## 1. **Docker Engine**
-Docker Engine is the software that builds, runs, and manages Docker containers using a client-server architecture. It consists of two main components:
+## 🛠️ Docker Architecture
+
+Docker operates using a **client-server** architecture. The Docker client communicates with the Docker daemon to build, run, and manage containers. The client and daemon can run on the same machine or communicate remotely via a REST API over UNIX sockets or a network. Docker Compose is another client that manages multi-container applications.
+
+### Docker Architecture Diagram
+![Docker Architecture](https://github.com/user-attachments/assets/1a71350c-a302-4c9b-8991-f2c84ed153d8)
+
+---
+
+## 🧰 Core Docker Components
+
+Docker is a platform that runs software applications inside containers, providing isolated environments that make applications more efficient and portable. Let's explore the core components of Docker in detail:
+
+---
+
+### 1. **Docker Engine**
+Docker Engine is the software that builds, runs, and manages Docker containers. It consists of two main components:
 - **Docker Daemon** (`dockerd`): The background process that manages Docker containers.
 - **Docker CLI (Command Line Interface)**: Allows users to manage Docker via the command line.
 
-> **Visual**: Docker Engine acts as the interface between the CLI and the Docker Daemon, managing the container lifecycle.  
-> (![image](https://github.com/user-attachments/assets/ed931afe-e020-4b88-afc2-71c423196c52)
+> **Visual**: Docker Engine acts as the interface between the CLI and Docker Daemon, managing the container lifecycle.  
 > ![Docker Engine](https://github.com/user-attachments/assets/ed931afe-e020-4b88-afc2-71c423196c52)
-
-
-
 
 ---
 
-## 2. **Containers**
-Docker containers are lightweight, portable, and isolated environments that contain all the necessary components (libraries, dependencies, etc.) to run an application.
+### 2. **Containers**
+Docker containers are lightweight, portable, and isolated environments that contain everything required to run an application, including application code, libraries, and dependencies.
 
 - **Containers**: Containers are isolated units running a specific application or service. Each container is derived from a Docker image, and multiple containers can run on the same host.
 
 > **Visual**: The portability of containers across different systems, ensuring they work the same everywhere.  
-<img width="674" alt="Ekran Resmi 2025-05-09 07 33 13" src="https://github.com/user-attachments/assets/a02a6bf7-921f-4fda-a0d1-8a557f3ec054" />
+> ![Containers](https://github.com/user-attachments/assets/a02a6bf7-921f-4fda-a0d1-8a557f3ec054)
 
 ---
 
-## 3. **Docker Images**
-Docker images are read-only templates containing everything required to run a container, including the application code, libraries, dependencies, and configurations. Containers are created from images.
+### 3. **Docker Images**
+Docker images are read-only templates that contain everything needed to run a container, such as application code, libraries, dependencies, and configuration files. Containers are created from images.
 
 - **Dockerfile**: A script that defines how to build a Docker image, specifying the base operating system, software, and configuration details.
 
 > **Visual**: The process of building an image from a Dockerfile.  
-> ![image](https://github.com/user-attachments/assets/4aeecd11-b2ef-49ad-ad89-108d1104d784)
-
+> ![Docker Image](https://github.com/user-attachments/assets/4aeecd11-b2ef-49ad-ad89-108d1104d784)
 
 ---
 
-## 4. **Docker Hub and Registries**
+### 4. **Docker Hub and Registries**
 Docker Hub is a central repository for storing and sharing Docker images. Users can download and share images via Docker Hub.
 
 - **Public Repository**: Public images that anyone can access and use.
 - **Private Repository**: Private repositories where users store images that only specific users can access.
 
-
 ---
 
-## 5. **Docker Compose**
+### 5. **Docker Compose**
 Docker Compose is a tool for defining and running multi-container applications. Compose allows you to define all the services of an application in a single YAML file and start them all at once with the `docker-compose up` command.
 
 - **docker-compose.yml**: A configuration file that defines each service’s image, network connections, and other settings.
 
 > **Visual**: A structure where multiple services are run simultaneously using Docker Compose.  
-<img width="497" alt="Ekran Resmi 2025-05-09 07 38 49" src="https://github.com/user-attachments/assets/76635ee4-a80a-493c-93ad-3a41bccdef44" />
+> ![Docker Compose](https://github.com/user-attachments/assets/76635ee4-a80a-493c-93ad-3a41bccdef44)
 
 ---
 
-## 6. **Docker Volumes**
-Containers are isolated environments, so persistent storage is required to prevent data loss. Docker Volumes ensure that data is stored persistently across containers.
+### 6. **Docker Volumes**
+Containers are isolated, so persistent storage is required to prevent data loss. Docker Volumes ensure that data is stored persistently across containers.
 
-- **Data Sharing**: Data doesn't get lost when a container is stopped. Volumes allow data to be shared between containers.
+- **Data Sharing**: Volumes allow data to persist and be shared between containers, even if a container is stopped.
 
 > **Visual**: How data is transferred between containers using Docker Volumes.  
-> ![image](https://github.com/user-attachments/assets/be1af951-a376-4e6a-b2b0-2b627c9f9603)
-
+> ![Docker Volumes](https://github.com/user-attachments/assets/be1af951-a376-4e6a-b2b0-2b627c9f9603)
 
 ---
 
-## 7. **Docker Network**
-Docker networks define how containers communicate with each other and with the outside world. Docker provides a virtual network environment for each container.
+### 7. **Docker Networks**
+Docker networks define how containers communicate with each other and with the outside world. Docker provides a virtual network environment for containers.
 
-- **Bridge Network**: The default network type, where containers can communicate with each other only within the same network.
+- **Bridge Network**: The default network type where containers can communicate with each other only within the same network.
 - **Host Network**: Containers use the host machine’s network.
 - **Overlay Network**: Enables communication between containers on different hosts.
 
 > **Visual**: How Docker network enables data communication between containers.  
-> ![image](https://github.com/user-attachments/assets/895a9421-7e8d-4224-93c0-3a26374b1188)
-
+> ![Docker Networks](https://github.com/user-attachments/assets/895a9421-7e8d-4224-93c0-3a26374b1188)
 
 ---
 
+## 📄 Dockerfile Overview
 
-## Dockerfile Overview
+ **Dockerfile** is a text document containing all the commands needed to assemble a Docker image. It includes various instructions to automate the creation of Docker images.
 
-A **Dockerfile** is a text document that contains all the commands needed to assemble a Docker image. It supports various instructions that allow you to automate the creation of Docker images.
-
-## Common Dockerfile Instructions
+### Common Dockerfile Instructions
 
 | **Instruction** | **Description**                                                                 |
 |-----------------|---------------------------------------------------------------------------------|
-| **ADD**         | Add local or remote files and directories.                                      |
-| **ARG**         | Use build-time variables.                                                       |
+| **ADD**         | Add local or remote files and directories to the container.                     |
+| **ARG**         | Define build-time variables.                                                    |
 | **CMD**         | Specify default commands to run when the container starts.                      |
 | **COPY**        | Copy files and directories into the container.                                  |
-| **ENTRYPOINT**  | Specify the default executable to run.                                          |
+| **ENTRYPOINT**  | Define the default executable to run.                                           |
 | **ENV**         | Set environment variables inside the container.                                 |
 | **EXPOSE**      | Indicate which ports the container listens on.                                  |
 | **FROM**        | Define the base image for the build.                                            |
@@ -156,22 +143,7 @@ A **Dockerfile** is a text document that contains all the commands needed to ass
 | **VOLUME**      | Create mount points for volumes.                                                |
 | **WORKDIR**     | Set the working directory for subsequent instructions.                         |
 
-### Dockerfile Format
-
-- Each instruction is typically written in **UPPERCASE** for readability.
-- A Dockerfile begins with the `FROM` instruction, which specifies the base image.
-- Comments begin with `#` and can be placed on separate lines or after an instruction.
-  
-  Example:
-  ```dockerfile
-  # This is a comment
-  FROM ubuntu
-  RUN echo "Hello, Docker!"
-
-![image](https://github.com/user-attachments/assets/b758dcee-5058-4870-9467-c7b4f30696f6)
-
-
-
+---
 
 ## Docker Commands Cheat Sheet
 
