@@ -198,6 +198,18 @@ docker rmi <image-id>
 ```
 
 
+## Difference Between Docker Containers and Virtual Machines
+
+| **Feature**                                | **Docker Containers**                                                                                       | **Virtual Machines (VMs)**                                                                                          |
+|--------------------------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| **Operating System**                       | Containers rely on the underlying OS kernel and do not have a separate guest OS.                             | VMs have their own operating system, which runs on top of a hypervisor.                                                |
+| **Size and Resource Usage**                | Containers are lightweight because they don’t include an OS, just the application and necessary libraries.    | VMs are significantly larger because they include the entire OS and application, requiring more resources.            |
+| **Resource Sharing**                       | Containers share resources like CPU, memory, and storage with other containers on the same host OS.          | Each VM has its own resources like CPU, memory, and storage, which are isolated from other VMs.                       |
+| **Process Isolation**                      | OS-level process isolation, sharing the kernel with other containers.                                        | Hardware-level process isolation, which makes VMs slower to boot and more resource-intensive.                        |
+| **Boot Time**                              | Containers boot up quickly as they share the underlying OS kernel.                                           | VMs are slower to boot because they require starting up a full operating system.                                      |
+| **Use Case**                               | Ideal for microservices, lightweight applications, and environments that need fast scaling.                   | Best for running multiple different operating systems or applications that require full OS environments.             |
+
+
 ### Docs
 - [Docker Official Documentation](https://docs.docker.com/)
 - [Docker Hub](https://hub.docker.com/)
