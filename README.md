@@ -1,6 +1,18 @@
 # 🚀 Inception
 
-The Inception project challenges you to design a secure and modular infrastructure using Docker and Docker Compose. The goal is to configure several isolated services that communicate via Docker networks, with NGINX acting as a single secure entry point.
+The Inception project at 42 involves designing a secure and modular infrastructure using Docker and Docker Compose. You will containerize multiple services like NGINX, WordPress, and MariaDB, with NGINX acting as the secure entry point.
+
+🔑 Key Features:
+
+  - Using Docker Compose for multi-container management.
+  
+  - Ensuring security with SSL/TLS encryption and isolated services.
+  
+  - Configuring services to communicate through Docker networks.
+
+The project focuses on practical experience with containerization, networking, and secure infrastructure management.
+
+
 
 ---
 
