@@ -108,6 +108,50 @@ Docker networks define how containers communicate with each other and with the o
 ---
 
 
+## Dockerfile Overview
+
+A **Dockerfile** is a text document that contains all the commands needed to assemble a Docker image. It supports various instructions that allow you to automate the creation of Docker images.
+
+## Common Dockerfile Instructions
+
+| **Instruction** | **Description**                                                                 |
+|-----------------|---------------------------------------------------------------------------------|
+| **ADD**         | Add local or remote files and directories.                                      |
+| **ARG**         | Use build-time variables.                                                       |
+| **CMD**         | Specify default commands to run when the container starts.                      |
+| **COPY**        | Copy files and directories into the container.                                  |
+| **ENTRYPOINT**  | Specify the default executable to run.                                          |
+| **ENV**         | Set environment variables inside the container.                                 |
+| **EXPOSE**      | Indicate which ports the container listens on.                                  |
+| **FROM**        | Define the base image for the build.                                            |
+| **HEALTHCHECK** | Specify a command to check the health of the container.                         |
+| **LABEL**       | Add metadata to an image.                                                       |
+| **MAINTAINER**  | Specify the author of the image.                                                |
+| **ONBUILD**     | Define instructions to be executed when the image is used in a build.          |
+| **RUN**         | Execute commands during the image build.                                        |
+| **SHELL**       | Set the default shell for the container.                                        |
+| **STOPSIGNAL**  | Define the signal to stop the container.                                        |
+| **USER**        | Set the user and group ID for running commands.                                 |
+| **VOLUME**      | Create mount points for volumes.                                                |
+| **WORKDIR**     | Set the working directory for subsequent instructions.                         |
+
+### Dockerfile Format
+
+- Each instruction is typically written in **UPPERCASE** for readability.
+- A Dockerfile begins with the `FROM` instruction, which specifies the base image.
+- Comments begin with `#` and can be placed on separate lines or after an instruction.
+  
+  Example:
+  ```dockerfile
+  # This is a comment
+  FROM ubuntu
+  RUN echo "Hello, Docker!"
+
+![image](https://github.com/user-attachments/assets/b758dcee-5058-4870-9467-c7b4f30696f6)
+
+
+
+
 ## Docker Commands Cheat Sheet
 
 Docker is a powerful tool for managing containers. Here are some essential Docker commands to get you started:
