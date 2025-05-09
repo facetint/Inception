@@ -37,7 +37,8 @@ Docker Engine is the software that builds, runs, and manages Docker containers u
 - **Docker CLI (Command Line Interface)**: Allows users to manage Docker via the command line.
 
 > **Visual**: Docker Engine acts as the interface between the CLI and the Docker Daemon, managing the container lifecycle.  
-> ![Docker Engine](https://github.com/facetint/Inception/raw/main/images/docker-engine.png)
+> (![image](https://github.com/user-attachments/assets/ed931afe-e020-4b88-afc2-71c423196c52)
+)
 
 
 ---
@@ -48,7 +49,7 @@ Docker containers are lightweight, portable, and isolated environments that cont
 - **Containers**: Containers are isolated units running a specific application or service. Each container is derived from a Docker image, and multiple containers can run on the same host.
 
 > **Visual**: The portability of containers across different systems, ensuring they work the same everywhere.  
-> ![Containers](https://example.com/containers.png)
+<img width="674" alt="Ekran Resmi 2025-05-09 07 33 13" src="https://github.com/user-attachments/assets/a02a6bf7-921f-4fda-a0d1-8a557f3ec054" />
 
 ---
 
@@ -58,7 +59,8 @@ Docker images are read-only templates containing everything required to run a co
 - **Dockerfile**: A script that defines how to build a Docker image, specifying the base operating system, software, and configuration details.
 
 > **Visual**: The process of building an image from a Dockerfile.  
-> ![Docker Images](https://example.com/docker-images.png)
+> ![image](https://github.com/user-attachments/assets/4aeecd11-b2ef-49ad-ad89-108d1104d784)
+
 
 ---
 
@@ -68,8 +70,6 @@ Docker Hub is a central repository for storing and sharing Docker images. Users 
 - **Public Repository**: Public images that anyone can access and use.
 - **Private Repository**: Private repositories where users store images that only specific users can access.
 
-> **Visual**: The structure of repositories on Docker Hub and popular images.  
-> ![Docker Hub](https://example.com/docker-hub.png)
 
 ---
 
@@ -79,7 +79,7 @@ Docker Compose is a tool for defining and running multi-container applications. 
 - **docker-compose.yml**: A configuration file that defines each service’s image, network connections, and other settings.
 
 > **Visual**: A structure where multiple services are run simultaneously using Docker Compose.  
-> ![Docker Compose](https://example.com/docker-compose.png)
+<img width="497" alt="Ekran Resmi 2025-05-09 07 38 49" src="https://github.com/user-attachments/assets/76635ee4-a80a-493c-93ad-3a41bccdef44" />
 
 ---
 
@@ -89,7 +89,8 @@ Containers are isolated environments, so persistent storage is required to preve
 - **Data Sharing**: Data doesn't get lost when a container is stopped. Volumes allow data to be shared between containers.
 
 > **Visual**: How data is transferred between containers using Docker Volumes.  
-> ![Docker Volumes](https://example.com/docker-volumes.png)
+> ![image](https://github.com/user-attachments/assets/be1af951-a376-4e6a-b2b0-2b627c9f9603)
+
 
 ---
 
@@ -101,17 +102,8 @@ Docker networks define how containers communicate with each other and with the o
 - **Overlay Network**: Enables communication between containers on different hosts.
 
 > **Visual**: How Docker network enables data communication between containers.  
-> ![Docker Network](https://example.com/docker-network.png)
+> ![image](https://github.com/user-attachments/assets/895a9421-7e8d-4224-93c0-3a26374b1188)
 
----
-
-## 8. **Docker Swarm and Orchestration**
-Docker Swarm is an orchestration tool that enables managing Docker containers across multiple hosts. Docker Swarm provides automatic scaling, container restarts, and load balancing.
-
-> **Visual**: Docker Swarm creates a distributed container management structure across multiple hosts.  
-> ![Docker Swarm](https://example.com/docker-swarm.png)
-
----
 
 ## Conclusion
 Docker is a powerful platform that enables running applications in portable and isolated environments. The core components such as **Docker Engine**, **Containers**, **Images**, **Docker Compose**, **Volumes**, and **Networks** provide a complete solution for managing containerized applications efficiently.
