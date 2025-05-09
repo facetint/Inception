@@ -5,21 +5,20 @@ The Inception project challenges you to design a secure and modular infrastructu
 ---
 
 ## 📑 Table of Contents
-- [What is Docker?](#what-is-docker)
-- [Docker Architecture](#docker-architecture)
-- [Core Docker Components](#core-docker-components)
-  - [Docker Engine](#docker-engine)
-  - [Containers](#containers)
-  - [Docker Images](#docker-images)
-  - [Docker Hub and Registries](#docker-hub-and-registries)
-  - [Docker Compose](#docker-compose)
-  - [Docker Volumes](#docker-volumes)
-  - [Docker Networks](#docker-networks)
-- [Dockerfile Overview](#dockerfile-overview)
+- [🌍 What is Docker?](#what-is-docker)
+- [🛠️ Docker Architecture](#docker-architecture)
+- [🧰 Core Docker Components](#core-docker-components)
+  - [1. Docker Engine](#docker-engine)
+  - [2. Containers](#containers)
+  - [3. Docker Images](#docker-images)
+  - [4. Docker Hub and Registries](#docker-hub-and-registries)
+  - [5. Docker Compose](#docker-compose)
+  - [6. Docker Volumes](#docker-volumes)
+  - [7. Docker Networks](#docker-networks)
+- [📄 Dockerfile Overview](#dockerfile-overview)
 - [Docker Commands Cheat Sheet](#docker-commands-cheat-sheet)
 - [Difference Between Docker Containers and Virtual Machines](#difference-between-docker-containers-and-virtual-machines)
 
----
 
 
 ## 🌍 What is Docker?
