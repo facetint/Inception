@@ -200,6 +200,14 @@ docker rmi <image-id>
 
 ## Difference Between Docker Containers and Virtual Machines
 
+
+
+![image](https://github.com/user-attachments/assets/c4a32ff4-582e-45ae-b45a-ad6676568b6f)
+
+
+
+
+
 | **Feature**                                | **Docker Containers**                                                                                       | **Virtual Machines (VMs)**                                                                                          |
 |--------------------------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | **Operating System**                       | Containers rely on the underlying OS kernel and do not have a separate guest OS.                             | VMs have their own operating system, which runs on top of a hypervisor.                                                |
