@@ -16,7 +16,7 @@ The Inception project challenges you to design a secure and modular infrastructu
   - [6. Docker Volumes](#docker-volumes)
   - [7. Docker Networks](#docker-networks)
 - [📄 Dockerfile Overview](#-dockerfile-overview)
-- [Docker Commands Cheat Sheet](#-docker-commands-cheat-sheet)
+- [Docker Commands](#-docker-commands)
 - [Difference Between Docker Containers and Virtual Machines](#-difference-between-docker-containers-and-virtual-machines)
 
 
@@ -143,7 +143,7 @@ Docker networks define how containers communicate with each other and with the o
 
 ---
 
-## Docker Commands Cheat Sheet
+## Docker Commands
 
 Docker is a powerful tool for managing containers. Here are some essential Docker commands to get you started:
 
