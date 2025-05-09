@@ -38,7 +38,7 @@ Docker Engine is the software that builds, runs, and manages Docker containers u
 
 > **Visual**: Docker Engine acts as the interface between the CLI and the Docker Daemon, managing the container lifecycle.  
 > (![image](https://github.com/user-attachments/assets/ed931afe-e020-4b88-afc2-71c423196c52)
-)
+
 
 
 ---
@@ -105,13 +105,8 @@ Docker networks define how containers communicate with each other and with the o
 > ![image](https://github.com/user-attachments/assets/895a9421-7e8d-4224-93c0-3a26374b1188)
 
 
-## Conclusion
-Docker is a powerful platform that enables running applications in portable and isolated environments. The core components such as **Docker Engine**, **Containers**, **Images**, **Docker Compose**, **Volumes**, and **Networks** provide a complete solution for managing containerized applications efficiently.
-
-Learning and using Docker will increase the portability and efficiency of your applications!
-
 ---
 
-### References
+### Docs
 - [Docker Official Documentation](https://docs.docker.com/)
 - [Docker Hub](https://hub.docker.com/)
