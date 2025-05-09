@@ -1,0 +1,19 @@
+FROM debian:stable-20250428-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    mariadb-server \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+
+COPY ./tools/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+RUN mkdir -p /run/mysqld /var/lib/mysql && \
+    chown -R mysql:mysql /run/mysqld /var/lib/mysql
+
+VOLUME /var/lib/mysql
+
+EXPOSE 3306
+
+ENTRYPOINT ["/entrypoint.sh"]
