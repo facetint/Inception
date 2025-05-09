@@ -4,6 +4,25 @@ The Inception project challenges you to design a secure and modular infrastructu
 
 ---
 
+
+## 📑 Table of Contents
+- [What is Docker?](#what-is-docker)
+- [Docker Architecture](#docker-architecture)
+- [Core Docker Components](#core-docker-components)
+  - [Docker Engine](#docker-engine)
+  - [Containers](#containers)
+  - [Docker Images](#docker-images)
+  - [Docker Hub and Registries](#docker-hub-and-registries)
+  - [Docker Compose](#docker-compose)
+  - [Docker Volumes](#docker-volumes)
+  - [Docker Networks](#docker-networks)
+- [Dockerfile Overview](#dockerfile-overview)
+- [Docker Commands Cheat Sheet](#docker-commands-cheat-sheet)
+- [Difference Between Docker Containers and Virtual Machines](#difference-between-docker-containers-and-virtual-machines)
+
+---
+
+
 ## What is Docker?
 
   Docker is an open platform that simplifies developing, shipping, and running applications by separating them from the underlying infrastructure, enabling faster and more consistent deployment.
@@ -38,6 +57,8 @@ Docker Engine is the software that builds, runs, and manages Docker containers u
 
 > **Visual**: Docker Engine acts as the interface between the CLI and the Docker Daemon, managing the container lifecycle.  
 > (![image](https://github.com/user-attachments/assets/ed931afe-e020-4b88-afc2-71c423196c52)
+> ![Docker Engine](https://github.com/user-attachments/assets/ed931afe-e020-4b88-afc2-71c423196c52)
+
 
 
 
