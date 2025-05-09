@@ -18,6 +18,7 @@ The Inception project challenges you to design a secure and modular infrastructu
 - [📄 Dockerfile Overview](#-dockerfile-overview)
 - [Docker Commands](#-docker-commands)
 - [Difference Between Docker Containers and Virtual Machines](#-difference-between-docker-containers-and-virtual-machines)
+- [📚 Docs](-#docs)
 
 
 
@@ -253,8 +254,12 @@ docker rmi <image-id>
 | **Use Case**                               | Ideal for microservices, lightweight applications, and environments that need fast scaling.                   | Best for running multiple different operating systems or applications that require full OS environments.             |
 
 
-### Docs
+## 📚 Docs
 - [Docker Official Documentation](https://docs.docker.com/)
 - [Docker Hub](https://hub.docker.com/)
+- [Dockerfile Reference](https://docs.docker.com/reference/dockerfile/)
+- [Introduction to Docker - GeeksforGeeks](https://www.geeksforgeeks.org/introduction-to-docker/)
+- [Docker Get Started Workshop](https://docs.docker.com/get-started/workshop/02_our_app/)
+- [Docker Compose - Appmaster.io](https://appmaster.io/nl/blog/docker-compose-nl)
 
 
