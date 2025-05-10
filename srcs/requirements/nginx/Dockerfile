@@ -1,13 +1,13 @@
-FROM debian:stable-20250428-slim
+FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y \
     nginx \
     bash \
     openssl \
     && rm -rf /var/lib/apt/lists/*
 
-RUN rm -f /etc/nginx/sites-available/default
-COPY ./conf/default.conf /etc/nginx/sites-available/default
+RUN rm -f /etc/nginx/sites-enabled/default
+COPY ./conf/default.conf /etc/nginx/sites-enabled/default
 
 COPY ./tools/setup_nginx.sh /setup_nginx.sh
 RUN chmod +x /setup_nginx.sh
