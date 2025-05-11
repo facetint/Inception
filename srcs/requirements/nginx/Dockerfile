@@ -7,12 +7,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN rm -f /etc/nginx/sites-enabled/default
+
 COPY ./conf/default.conf /etc/nginx/sites-enabled/default
 
 COPY ./tools/setup_nginx.sh /setup_nginx.sh
-RUN chmod +x /setup_nginx.sh
 
-EXPOSE 443
+RUN chmod +x /setup_nginx.sh
 
 ENTRYPOINT ["/setup_nginx.sh"]
 
