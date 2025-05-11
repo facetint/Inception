@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 SSL_DIR="/etc/ssl"
 SSL_CERT="${SSL_DIR}/ssl.crt"
 SSL_KEY="${SSL_DIR}/ssl.key"
