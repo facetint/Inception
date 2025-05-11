@@ -1,12 +1,9 @@
 #!/bin/bash
 
 setup_wordpress() {
-    mkdir -p /var/www/html
     cd /var/www/html
 
     rm -rf /var/www/html/*
-
-    echo "Downloading WordPress..."
 
     wget -q http://wordpress.org/latest.tar.gz
     tar xfz latest.tar.gz
@@ -17,47 +14,40 @@ setup_wordpress() {
 }
 
 configure_wp_config() {
-    echo "⚙️ Configuring wp-config.php..."
-    cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 
-    sed -i "s/define( *'DB_NAME'.*/define('DB_NAME', '${DB_NAME}');/" /var/www/html/wp-config.php
-    sed -i "s/define( *'DB_USER'.*/define('DB_USER', '${DB_USER}');/" /var/www/html/wp-config.php
-    sed -i "s/define( *'DB_PASSWORD'.*/define('DB_PASSWORD', '${DB_PASS}');/" /var/www/html/wp-config.php
-    sed -i "s/define( *'DB_HOST'.*/define('DB_HOST', 'mariadb');/" /var/www/html/wp-config.php
+    if [ -f /var/www/html/wp-config.php ]; then
+        echo "⚠️ wp-config.php already exists. Skipping configuration."
+        return
+    fi
 
-    echo "wp-config.php configured."
-}
+    wp config create --allow-root \
+        --dbname="${DB_NAME}" \
+        --dbuser="${DB_USER}" \
+        --dbpass="${DB_PASS}" \
+        --dbhost="mariadb"
 
-set_permissions() {
-    echo "🔒 Setting permissions for /var/www/html..."
-    chown -R www-data:www-data /var/www/html
-    chmod -R 755 /var/www/html
+    echo "✅ wp-config.php configured."
 }
 
 install_wordpress() {
-    echo "Installing WordPress..."
-    wp core install \
-        --url="https://${SERVER_NAME}" \
+    wp core install --allow-root \
+        --url="${SERVER_NAME}" \
         --title="${SITE_TITLE}" \
         --admin_user="${WP_ADMIN_USER}" \
         --admin_password="${WP_ADMIN_PASS}" \
-        --admin_email="${WP_MAIL}" \
-        --allow-root
-    echo "WordPress installed successfully."
-}
+        --admin_email="${WP_MAIL}"
 
-start_php_fpm() {
-    echo "Starting PHP-FPM..."
-    exec php-fpm8.2 --nodaemonize
+     wp user create --allow-root \
+        $WP_USER_NAME $WP_USER_EMAIL \
+        --user_pass=$WP_USER_PASSWORD;
+    echo "✅ WordPress installed successfully."
 }
 
 main() {
-    echo "Starting WordPress setup"
     setup_wordpress
     configure_wp_config
-    set_permissions
     install_wordpress
-    start_php_fpm
+    exec php-fpm7.4 --nodaemonize
 }
 
 main "$@"
