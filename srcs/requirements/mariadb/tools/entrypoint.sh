@@ -7,7 +7,7 @@ initialize_database() {
 
 start_mariadb() {
     echo "Starting MariaDB in the background"
-    mariadbd --user=mysql --datadir=/var/lib/mysql --console &
+    mariadbd --user=mysql --datadir=/var/lib/mysql &
     sleep 5
 }
 
@@ -15,13 +15,10 @@ generate_sql_config() {
     echo "⚙️ Generating SQL configuration..."
     cat << EOF > /tmp/sqlConfig.sql
     CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
     CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASS}';
     GRANT ALL PRIVILEGES ON \`${DB_NAME}\`.* TO '${DB_USER}'@'%';
-
     CREATE USER IF NOT EXISTS '${DB_ADMIN_USER}'@'%' IDENTIFIED BY '${DB_ADMIN_PASS}';
     GRANT ALL PRIVILEGES ON *.* TO '${DB_ADMIN_USER}'@'%' WITH GRANT OPTION;
-
     FLUSH PRIVILEGES;
 EOF
 }
@@ -34,13 +31,12 @@ apply_sql_config() {
 
 restart_mariadb() {
     echo "Restarting MariaDB..."
-    pkill -9 "mariadbd"
+    mariadb -e "SHUTDOWN;"
     sleep 2
     exec mariadbd --user=mysql --datadir=/var/lib/mysql --port=3306 --console
 }
 
 main() {
-    echo "Starting MariaDB setup process"
     initialize_database
     start_mariadb
     generate_sql_config
