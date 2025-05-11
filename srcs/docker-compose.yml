@@ -12,13 +12,11 @@ services:
       - "443:443"
     restart: always
     volumes:
-      - ./requirements/nginx/conf:/etc/nginx/conf
       - wordpress_data:/var/www/html
     networks:
       - inception
     depends_on:
       - wordpress
-
   wordpress:
     container_name: wordpress
     build:
@@ -33,9 +31,6 @@ services:
       - mariadb
     networks:
       - inception
-    ports:
-      - "9000:9000"
-
   mariadb:
     container_name: mariadb
     build:
@@ -48,8 +43,6 @@ services:
     networks:
       - inception
     restart: always
-    ports:
-      - "3306:3306"
 
 networks:
   inception:
@@ -60,20 +53,12 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/fatmanurcetintas/Desktop/githubinception/srcs/mariadb
+      device: /home/facetint/data/mariadb
       o: bind
 
   wordpress_data:
     driver: local
     driver_opts:
       type: none
-      device: /Users/fatmanurcetintas/Desktop/githubinception/srcs/wordpress
+      device: /home/facetint/data/wordpress
       o: bind
-
-# secrets:
-#   db_password:
-#     file: ../secrets/db_password.txt
-#   db_root_password:
-#     file: ../secrets/db_root_password.txt
-#   credentials:
-#     file: ../secrets/credentials.txt
