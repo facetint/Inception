@@ -16,4 +16,6 @@ COPY ./tools/start.sh /start.sh
 
 RUN chmod +x /start.sh
 
+EXPOSE 9000
+
 ENTRYPOINT ["/start.sh"]
