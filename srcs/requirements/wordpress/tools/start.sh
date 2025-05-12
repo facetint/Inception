@@ -1,5 +1,13 @@
 #!/bin/bash
 
+wait_for_mariadb() {
+    while ! nc -z "${DB_HOST}" 3306; do
+        echo "❌ MariaDB is not ready yet. Retrying in 2 seconds..."
+        sleep 2
+    done
+    echo "✅ MariaDB is ready!"
+}
+
 setup_wordpress() {
     cd /var/www/html
 
@@ -44,6 +52,7 @@ install_wordpress() {
 }
 
 main() {
+    wait_for_mariadb
     setup_wordpress
     configure_wp_config
     install_wordpress
