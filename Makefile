@@ -1,19 +1,20 @@
 all : build up
 
 up:
-	docker-compose -f srcs/docker-compose.yml up -d
+	mkdir -p wordpress
+	mkdir -p mariadb
+	docker compose -f srcs/docker-compose.yml up -d
 
 build:
-	docker-compose -f srcs/docker-compose.yml build
+	docker compose -f srcs/docker-compose.yml build
 
 down:
-	docker-compose -f srcs/docker-compose.yml down
+	docker compose -f srcs/docker-compose.yml down
 
 ps:
-	docker-compose -f srcs/docker-compose.yml ps
+	docker compose -f srcs/docker-compose.yml ps
 
 clean:
-	docker-compose -f srcs/docker-compose.yml down -v --remove-orphans
-	docker system prune -af --volumes
-
+	docker compose -f srcs/docker-compose.yml down
+	
 rebuild: down build up
