@@ -1,7 +1,7 @@
 #!/bin/bash
 
 wait_for_mariadb() {
-    while ! nc -z "${DB_HOST}" 3306; do
+    while ! nc -z "${MYSQL_HOST}" 3306; do
         echo "❌ MariaDB is not ready yet. Retrying in 2 seconds..."
         sleep 2
     done
@@ -29,9 +29,9 @@ configure_wp_config() {
     fi
 
     wp config create --allow-root \
-        --dbname="${DB_NAME}" \
-        --dbuser="${DB_USER}" \
-        --dbpass="${DB_PASS}" \
+        --dbname="${MYSQL_NAME}" \
+        --dbuser="${MYSQL_USER}" \
+        --dbpass="${MYSQL_PASS}" \
         --dbhost="mariadb"
 
     echo "✅ wp-config.php configured."
@@ -39,7 +39,7 @@ configure_wp_config() {
 
 install_wordpress() {
     wp core install --allow-root \
-        --url="${SERVER_NAME}" \
+        --url="${DOMAIN_NAME}" \
         --title="${SITE_TITLE}" \
         --admin_user="${WP_ADMIN_USER}" \
         --admin_password="${WP_ADMIN_PASS}" \
