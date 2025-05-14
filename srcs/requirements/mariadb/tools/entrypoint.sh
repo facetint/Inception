@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export DB_PASSWORD=$(cat /run/secrets/db_password)
+export DB_ADMIN_PASSWORD=$(cat /run/secrets/credentials)
+
 initialize_database() {
     rm -rf /var/lib/mysql/*
     mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -14,11 +17,11 @@ start_mariadb() {
 generate_sql_config() {
     echo "⚙️ Generating SQL configuration..."
     cat << EOF > /tmp/sqlConfig.sql
-    CREATE DATABASE IF NOT EXISTS \`${MYSQL_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-    CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASS}';
-    GRANT ALL PRIVILEGES ON \`${MYSQL_NAME}\`.* TO '${MYSQL_USER}'@'%';
-    CREATE USER IF NOT EXISTS '${MYSQL_ADMIN_USER}'@'%' IDENTIFIED BY '${MYSQL__ADMIN_PASS}';
-    GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_ADMIN_USER}'@'%' WITH GRANT OPTION;
+    CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+    CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';
+    GRANT ALL PRIVILEGES ON \`${DB_NAME}\`.* TO '${DB_USER}'@'%';
+    CREATE USER IF NOT EXISTS '${DB_ADMIN_USER}'@'%' IDENTIFIED BY '${DB_ADMIN_PASSWORD}';
+    GRANT ALL PRIVILEGES ON *.* TO '${DB_ADMIN_USER}'@'%' WITH GRANT OPTION;
     FLUSH PRIVILEGES;
 EOF
 }
