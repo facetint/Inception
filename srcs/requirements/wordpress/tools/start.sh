@@ -1,7 +1,6 @@
-#!/bin/bash
-
+#!/bin/sh
 wait_for_mariadb() {
-    while ! nc -z "${MYSQL_HOST}" 3306; do
+    while ! nc -z "${DB_HOST}" 3306; do
         echo "❌ MariaDB is not ready yet. Retrying in 2 seconds..."
         sleep 2
     done
@@ -22,19 +21,16 @@ setup_wordpress() {
 }
 
 configure_wp_config() {
-
-    if [ -f /var/www/html/wp-config.php ]; then
+    if [ ! -f /var/www/html/wp-config.php ]; then
+        wp config create --allow-root \
+            --dbname="${DB_NAME}" \
+            --dbuser="${DB_USER}" \
+            --dbpass="${DB_PASSWORD}" \
+            --dbhost="mariadb"
+        echo "✅ wp-config.php configured."
+    else
         echo "⚠️ wp-config.php already exists. Skipping configuration."
-        return
     fi
-
-    wp config create --allow-root \
-        --dbname="${MYSQL_NAME}" \
-        --dbuser="${MYSQL_USER}" \
-        --dbpass="${MYSQL_PASS}" \
-        --dbhost="mariadb"
-
-    echo "✅ wp-config.php configured."
 }
 
 install_wordpress() {
@@ -45,17 +41,19 @@ install_wordpress() {
         --admin_password="${WP_ADMIN_PASS}" \
         --admin_email="${WP_MAIL}"
 
-     wp user create --allow-root \
-        $WP_USER_NAME $WP_USER_EMAIL \
-        --user_pass=$WP_USER_PASSWORD;
+    wp user create --allow-root \
+       $WP_USER_NAME $WP_USER_EMAIL \
+       --user_pass=$WP_USER_PASSWORD;
     echo "✅ WordPress installed successfully."
 }
+
 
 main() {
     wait_for_mariadb
     setup_wordpress
     configure_wp_config
     install_wordpress
+
     exec php-fpm7.4 --nodaemonize
 }
 
