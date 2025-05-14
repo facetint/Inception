@@ -6,8 +6,6 @@ services:
     env_file:
       - .env
     image: nginx
-    environment:
-      DOMAIN_NAME: ${DOMAIN_NAME}
     ports:
       - "443:443"
     restart: always
@@ -29,6 +27,9 @@ services:
     restart: always
     depends_on:
       - mariadb
+    secrets:
+      - credentials
+      - db_password
     networks:
       - inception
   mariadb:
@@ -42,10 +43,14 @@ services:
       - mariadb:/var/lib/mysql
     networks:
       - inception
+    secrets:
+      - db_password
+      - db_root_password
     restart: always
 
 networks:
   inception:
+    name: inception
     driver: bridge
 
 volumes:
@@ -64,3 +69,11 @@ volumes:
       type: none
       device: /home/facetint/data/wordpress
       o: bind
+
+secrets:
+  db_password:
+    file: ../secrets/db_password.txt
+  db_root_password:
+    file: ../secrets/db_root_password.txt
+  credentials:
+    file: ../secrets/credentials.txt
