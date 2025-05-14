@@ -1,4 +1,8 @@
 #!/bin/sh
+  export DB_PASSWORD=$(cat /run/secrets/db_password)
+  export WP_ADMIN_PASS=$(sed -n '1p' /run/secrets/credentials)
+  export WP_USER_PASSWORD=$(sed -n '2p' /run/secrets/credentials)
+
 wait_for_mariadb() {
     while ! nc -z "${DB_HOST}" 3306; do
         echo "❌ MariaDB is not ready yet. Retrying in 2 seconds..."
