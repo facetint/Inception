@@ -1,4 +1,6 @@
 #!/bin/sh
+sleep 3
+
   export DB_PASSWORD=$(cat /run/secrets/db_password)
   export WP_ADMIN_PASS=$(sed -n '1p' /run/secrets/credentials)
   export WP_USER_PASSWORD=$(sed -n '2p' /run/secrets/credentials)
@@ -24,40 +26,47 @@ setup_wordpress() {
     echo "✅ WordPress downloaded and extracted."
 }
 
-configure_wp_config() {
+install_wordpress() {
     if [ ! -f /var/www/html/wp-config.php ]; then
+        echo "⚙️ Creating wp-config.php..."
         wp config create --allow-root \
-            --dbname="${DB_NAME}" \
-            --dbuser="${DB_USER}" \
+            --dbname="${MYSQL_DATABASE_NAME}" \
+            --dbuser="${MYSQL_USER}" \
             --dbpass="${DB_PASSWORD}" \
             --dbhost="mariadb"
-        echo "✅ wp-config.php configured."
+
+        echo "🛠 Installing WordPress core..."
+        wp core install --allow-root \
+            --url="${DOMAIN_NAME}" \
+            --title="${SITE_TITLE}" \
+            --admin_user="${WP_ADMIN_USER}" \
+            --admin_password="${WP_ADMIN_PASS}" \
+            --admin_email="${WP_MAIL}"
+
+        echo "👤 Creating additional user..."
+        wp user create --allow-root \
+            $WP_USER_NAME $WP_USER_EMAIL \
+            --user_pass=$WP_USER_PASSWORD;
+
+        echo "✅ WordPress installation complete."
     else
-        echo "⚠️ wp-config.php already exists. Skipping configuration."
+        echo "⚠️ wp-config.php already exists. Skipping setup."
     fi
 }
 
-install_wordpress() {
-    wp core install --allow-root \
-        --url="${DOMAIN_NAME}" \
-        --title="${SITE_TITLE}" \
-        --admin_user="${WP_ADMIN_USER}" \
-        --admin_password="${WP_ADMIN_PASS}" \
-        --admin_email="${WP_MAIL}"
-
-    wp user create --allow-root \
-       $WP_USER_NAME $WP_USER_EMAIL \
-       --user_pass=$WP_USER_PASSWORD;
-    echo "✅ WordPress installed successfully."
+set_permissions() {
+    echo "🔐 Setting file permissions..."
+    chown -R www-data:www-data /var/www/html
+    chmod -R 755 /var/www/html
+    echo "✅ Permissions set."
 }
-
 
 main() {
     wait_for_mariadb
     setup_wordpress
-    configure_wp_config
     install_wordpress
-
+    set_permissions
+    echo "Starting PHP-FPM..."
     exec php-fpm7.4 --nodaemonize
 }
 
