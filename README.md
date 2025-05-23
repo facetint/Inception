@@ -272,48 +272,63 @@ docker rmi <image-id>
 
 ## 📦 About the Services
 
+---
+
 ### 🌐 NGINX
 
-  NGINX is a high-performance, lightweight web server used to serve static and dynamic web content efficiently. It is widely known for its ability to function as a reverse proxy, load balancer, and HTTP cache, making it an essential part of modern web architecture.
+> **NGINX** is a high-performance, lightweight web server and reverse proxy. It excels at handling **HTTPS traffic**, **load balancing**, and **caching**, making it a staple in modern web architectures.
 
-In this project, NGINX serves as the secure entry point for all external traffic. It handles HTTPS connections using TLS certificates and forwards requests to the WordPress container. It ensures encrypted communication and centralizes access control across the infrastructure.
+#### 🔐 Role in This Project
+- Acts as the **secure entry point** for all external traffic.
+- Manages **TLS/SSL certificates** to enable encrypted HTTPS connections.
+- **Forwards** incoming requests to the internal **WordPress** container.
 
-In short: Acts as a secure bridge between users and services, handling all external web traffic.
+#### 📡 Network Configuration
+- **Exposed Port:** `443 (HTTPS)`
+- **Forward Target:** WordPress container (via internal Docker network)
 
-Network Role:
+#### 🧩 Summary
+> Provides a secure and centralized access point for external users, protecting and directing traffic to backend services.
 
-Listens on port 443 (HTTPS)
-
-Forwards requests to the WordPress container over an internal Docker network
+---
 
 ### 🛢️ MariaDB
 
-  MariaDB is an open-source, high-performance relational database management system (RDBMS) derived from MySQL. It is designed for scalability, reliability, and compatibility with existing MySQL tools and libraries.
+> **MariaDB** is a powerful, open-source relational database derived from MySQL. It offers excellent **performance**, **stability**, and **MySQL compatibility**.
 
-In this project, MariaDB serves as the database engine for WordPress. It stores all dynamic data such as posts, user credentials, comments, and settings. The database container is isolated from external access and only accepts connections from the WordPress container within a private Docker network.
+#### 💾 Role in This Project
+- Serves as the **database engine** for WordPress.
+- Stores:
+  - Posts and pages
+  - User credentials
+  - Comments and site settings
 
-In short: Stores all persistent WordPress data in a secure and structured format.
+#### 🔒 Network Configuration
+- **Exposed Port:** `3306` (within the Docker network)
+- **Accessible By:** WordPress container only
 
-**Network Role:**
+#### 🧩 Summary
+> Acts as a secure and structured data store for all dynamic content used by WordPress.
 
-Runs on port 3306
-
-Only accessible by the WordPress container
+---
 
 ### 📝 WordPress
 
-  WordPress is the world’s most popular content management system (CMS). It allows users to create, manage, and publish websites without needing advanced technical skills. Its modular architecture supports thousands of themes and plugins for customization.
+> **WordPress** is the world’s leading **Content Management System (CMS)**. It enables users to create and manage websites easily using themes, plugins, and an intuitive admin interface.
 
-In this project, WordPress is the core application users interact with. It is written in PHP and dynamically generates content using data from the MariaDB database. WordPress connects to MariaDB over a secured internal network and is only exposed to the internet via NGINX.
+#### ⚙️ Role in This Project
+- Hosts the **web application** users interact with.
+- Written in **PHP** and connects to MariaDB for dynamic content.
+- Exposed to the web only via the NGINX reverse proxy.
 
-In short: Provides the interface and functionality for creating and managing a dynamic website.
+#### 🔗 Network Configuration
+- **Receives Requests From:** NGINX (secured with HTTPS)
+- **Connects To:** MariaDB for database operations
 
-**Network Role:**
+#### 🧩 Summary
+> Provides the frontend and administrative interface for building and managing a dynamic website.
 
-Receives traffic from NGINX
-
-Connects to MariaDB to retrieve and store content
-
+--
 
 
 ## 📚 Docs
