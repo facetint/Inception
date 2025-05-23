@@ -8,16 +8,6 @@ TEMP_PID=""
 initialize_database() {
     echo "Initializing MariaDB data directory..."
     if [ -z "$(ls -A /var/lib/mysql)" ]; then
-        echo "/var/lib/mysql is empty, installing MariaDB"
-        mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-    else
-        echo "/var/lib/mysql is not empty, skipping installation"
-    fi
-}
-
-initialize_database() {
-    echo "Initializing MariaDB data directory..."
-    if [ -z "$(ls -A /var/lib/mysql 2>/dev/null)" ]; then
         echo "/var/lib/mysql is empty. Installing MariaDB system tables..."
         mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
     else
