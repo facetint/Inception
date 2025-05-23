@@ -30,6 +30,10 @@ The project focuses on practical experience with containerization, networking, a
 - [📄 Dockerfile Overview](#-dockerfile-overview)
 - [Docker Commands](#-docker-commands)
 - [Difference Between Docker Containers and Virtual Machines](#-difference-between-docker-containers-and-virtual-machines)
+- [📦 About the Services](#-about-the-services)
+  - [ 🌐 NGINX](#-nginx)
+  - [🛢️ MariaDB](#-mariadb)
+  - [📝 WordPress](#wordpress)
 - [📚 Docs](-#docs)
 
 
@@ -264,6 +268,52 @@ docker rmi <image-id>
 | **Process Isolation**                      | OS-level process isolation, sharing the kernel with other containers.                                        | Hardware-level process isolation, which makes VMs slower to boot and more resource-intensive.                        |
 | **Boot Time**                              | Containers boot up quickly as they share the underlying OS kernel.                                           | VMs are slower to boot because they require starting up a full operating system.                                      |
 | **Use Case**                               | Ideal for microservices, lightweight applications, and environments that need fast scaling.                   | Best for running multiple different operating systems or applications that require full OS environments.             |
+
+
+## 📦 About the Services
+
+### 🌐 NGINX
+
+  NGINX is a high-performance, lightweight web server used to serve static and dynamic web content efficiently. It is widely known for its ability to function as a reverse proxy, load balancer, and HTTP cache, making it an essential part of modern web architecture.
+
+In this project, NGINX serves as the secure entry point for all external traffic. It handles HTTPS connections using TLS certificates and forwards requests to the WordPress container. It ensures encrypted communication and centralizes access control across the infrastructure.
+
+In short: Acts as a secure bridge between users and services, handling all external web traffic.
+
+Network Role:
+
+Listens on port 443 (HTTPS)
+
+Forwards requests to the WordPress container over an internal Docker network
+
+### 🛢️ MariaDB
+
+  MariaDB is an open-source, high-performance relational database management system (RDBMS) derived from MySQL. It is designed for scalability, reliability, and compatibility with existing MySQL tools and libraries.
+
+In this project, MariaDB serves as the database engine for WordPress. It stores all dynamic data such as posts, user credentials, comments, and settings. The database container is isolated from external access and only accepts connections from the WordPress container within a private Docker network.
+
+In short: Stores all persistent WordPress data in a secure and structured format.
+
+**Network Role:**
+
+Runs on port 3306
+
+Only accessible by the WordPress container
+
+### 📝 WordPress
+
+  WordPress is the world’s most popular content management system (CMS). It allows users to create, manage, and publish websites without needing advanced technical skills. Its modular architecture supports thousands of themes and plugins for customization.
+
+In this project, WordPress is the core application users interact with. It is written in PHP and dynamically generates content using data from the MariaDB database. WordPress connects to MariaDB over a secured internal network and is only exposed to the internet via NGINX.
+
+In short: Provides the interface and functionality for creating and managing a dynamic website.
+
+**Network Role:**
+
+Receives traffic from NGINX
+
+Connects to MariaDB to retrieve and store content
+
 
 
 ## 📚 Docs
